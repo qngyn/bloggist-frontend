@@ -7,50 +7,50 @@ import SuccessMsg from "../Alert/SuccessMsg";
 import LoadingComponent from "../Alert/LoadingComponent";
 
 const Register = () => {
-  //navigate hook
-  const navigate = useNavigate();
-  //dispatch
-  const dispatch = useDispatch();
-  const [formData, setFormData] = useState({
-    email: "",
-    password: "",
-    username: "",
-  });
+    //navigate hook
+    const navigate = useNavigate();
+    //dispatch
+    const dispatch = useDispatch();
+    const [formData, setFormData] = useState({
+        email: "",
+        password: "",
+        username: "",
+    });
 
   //handle form change
-  const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
+    const handleChange = (e) => {
+        setFormData({ ...formData, [e.target.name]: e.target.value });
+    };
 
   //handle form submit
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    //!dispatch
-    dispatch(
-      registerAction({
-        username: formData.username,
-        password: formData.password,
-        email: formData?.email,
-      })
-    );
-    // reset form
-    setFormData({
-      email: "",
-      password: "",
-      username: "",
-    });
-  };
+    const handleSubmit = (e) => {
+        e.preventDefault();
+      //!dispatch
+        dispatch(
+          registerAction({
+              username: formData.username,
+              password: formData.password,
+              email: formData?.email,
+          })
+        )
+      // reset form
+        setFormData({
+            email: "",
+            password: "",
+            username: "",
+        })
+    };
 
   //store data
-  const { user, error, isRegistered, loading } = useSelector(
-    (state) => state?.users
-  );
+    const { user, error, isRegistered, loading } = useSelector(
+        (state) => state?.users
+    );
   //! Redirect
-  useEffect(() => {
-    if (user?.status === "success") {
-      navigate("/login");
-    }
-  }, [user?.status]);
+    useEffect(() => {
+        if (user?.status === "success") {
+          navigate("/login");
+        }
+    }, [user?.status]);
 
   return (
     <form onSubmit={handleSubmit} className="w-full pl-2 lg:w-1/2">

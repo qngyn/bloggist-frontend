@@ -45,7 +45,7 @@ export const loginAction = createAsyncThunk( "users/login", async (payload, { re
     }
 });
 
-//register Action
+//register action
 export const registerAction = createAsyncThunk("users/register", async (payload, { rejectWithValue, getState, dispatch }) => {
     //make request
     try {
@@ -56,22 +56,22 @@ export const registerAction = createAsyncThunk("users/register", async (payload,
     }
 });
 
-//! Get User Public Profile Action
+//get User Public Profile Action
 export const userPublicProfileAction = createAsyncThunk( "users/user-public-profile", async (userId, { rejectWithValue, getState, dispatch }) => {
     //make request
     try {
-        const token = getState().users?.userAuth?.userInfo?.token;
-        const config = {
-            headers: {
-            Authorization: `Bearer ${token}`,
-            },
-        }
-        const { data } = await axios.get(`${BASE_URL}/users/public-profile/${userId}`,
-            config
-        );
-        return data;
+          const token = getState().users?.userAuth?.userInfo?.token;
+          const config = {
+              headers: {
+              Authorization: `Bearer ${token}`,
+              },
+          }
+          const { data } = await axios.get(`${BASE_URL}/users/public-profile/${userId}`,
+              config
+          );
+          return data;
     } catch (error) {
-        return rejectWithValue(error?.response?.data);
+          return rejectWithValue(error?.response?.data);
     }
 })
 
@@ -79,16 +79,16 @@ export const userPublicProfileAction = createAsyncThunk( "users/user-public-prof
 export const userPrivateProfileAction = createAsyncThunk("users/user-private-profile", async (userId, { rejectWithValue, getState, dispatch }) => {
     //make request
     try {
-        const token = getState().users?.userAuth?.userInfo?.token;
-        const config = {
-            headers: {
-            Authorization: `Bearer ${token}`,
-            },
-        }
-        const { data } = await axios.get(`${BASE_URL}/users/profile/`, config);
-        return data;
+          const token = getState().users?.userAuth?.userInfo?.token;
+          const config = {
+              headers: {
+              Authorization: `Bearer ${token}`,
+              },
+          }
+          const { data } = await axios.get(`${BASE_URL}/users/profile/`, config);
+          return data;
         } catch (error) {
-        return rejectWithValue(error?.response?.data);
+          return rejectWithValue(error?.response?.data);
         }
     }
 );
@@ -118,20 +118,20 @@ export const blockUserAction = createAsyncThunk("users/block-user", async (userI
 export const unBlockUserAction = createAsyncThunk("users/unblock-user", async (userId, { rejectWithValue, getState, dispatch }) => {
     //make request
     try {
-        const token = getState().users?.userAuth?.userInfo?.token;
-        const config = {
-            headers: {
-            Authorization: `Bearer ${token}`,
-            },
-        };
-        const { data } = await axios.put(
-            `${BASE_URL}/users/unblock/${userId}`,
-            {},
-            config
-        );
-      return data;
+          const token = getState().users?.userAuth?.userInfo?.token;
+          const config = {
+              headers: {
+              Authorization: `Bearer ${token}`,
+              },
+          };
+          const { data } = await axios.put(
+              `${BASE_URL}/users/unblock/${userId}`,
+              {},
+              config
+          );
+        return data;
     } catch (error) {
-      return rejectWithValue(error?.response?.data);
+        return rejectWithValue(error?.response?.data);
     }
 });
 
@@ -139,20 +139,20 @@ export const unBlockUserAction = createAsyncThunk("users/unblock-user", async (u
 export const followUserAction = createAsyncThunk("users/follow-user", async (userId, { rejectWithValue, getState, dispatch }) => {
     //make request
     try {
-        const token = getState().users?.userAuth?.userInfo?.token;
-        const config = {
-            headers: {
-            Authorization: `Bearer ${token}`,
-            },
-        };
-        const { data } = await axios.put(
-            `${BASE_URL}/users/following/${userId}`,
-            {},
-            config
-        );
-        return data;
+          const token = getState().users?.userAuth?.userInfo?.token;
+          const config = {
+              headers: {
+              Authorization: `Bearer ${token}`,
+              },
+          };
+          const { data } = await axios.put(
+              `${BASE_URL}/users/following/${userId}`,
+              {},
+              config
+          );
+          return data;
     } catch (error) {
-        return rejectWithValue(error?.response?.data);
+          return rejectWithValue(error?.response?.data);
     }
 });
 

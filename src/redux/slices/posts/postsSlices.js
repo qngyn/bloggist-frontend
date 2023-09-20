@@ -15,7 +15,7 @@ const INITIAL_STATE = {
     success: false,
 };
 
-//!Fetch public posts
+//fetch public posts
 export const fetchPublicPostsAction = createAsyncThunk("posts/fetch-public-posts", async (payload, { rejectWithValue, getState, dispatch }) => {
     //make request
     try {
@@ -26,31 +26,31 @@ export const fetchPublicPostsAction = createAsyncThunk("posts/fetch-public-posts
     }
 });
 
-//!Fetch pricate posts
+//fetch pricate posts
 export const fetchPrivatePostsAction = createAsyncThunk("posts/fetch-private-posts", 
-async (
-    { page = 1, limit = 2, searchTerm = "", category = "" },
-    { rejectWithValue, getState, dispatch }
-  ) => {
-    //make request
-    try {
-        const token = getState().users?.userAuth?.userInfo?.token;
-        const config = {
-            headers: {
-            Authorization: `Bearer ${token}`,
-            },
-        };
-        const { data } = await axios.get(
-            `${BASE_URL}/posts?page=${page}&limit=${limit}&searchTerm=${searchTerm}&category=${category}`,
-            config
-        );
-        return data;
-    } catch (error) {
-        return rejectWithValue(error?.response?.data);
-    }
+    async (
+        { page = 1, limit = 2, searchTerm = "", category = "" },
+        { rejectWithValue, getState, dispatch }
+    ) => {
+        //make request
+        try {
+            const token = getState().users?.userAuth?.userInfo?.token;
+            const config = {
+                headers: {
+                Authorization: `Bearer ${token}`,
+                },
+            };
+            const { data } = await axios.get(
+                `${BASE_URL}/posts?page=${page}&limit=${limit}&searchTerm=${searchTerm}&category=${category}`,
+                config
+            );
+            return data;
+        } catch (error) {
+            return rejectWithValue(error?.response?.data);
+        }
 });
 
-//!fetch single  posts
+//fetch single  posts
 export const getPostAction = createAsyncThunk("posts/get-post", async (postId, { rejectWithValue, getState, dispatch }) => {
     //make request
     try {
@@ -61,7 +61,7 @@ export const getPostAction = createAsyncThunk("posts/get-post", async (postId, {
     }
 });
 
-//!delete post
+//delete post
 export const deletePostAction = createAsyncThunk("posts/delete-post", async (postId, { rejectWithValue, getState, dispatch }) => {
     //make request
     try {
