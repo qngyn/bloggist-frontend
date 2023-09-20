@@ -1,13 +1,10 @@
 import { useEffect } from "react";
-
 import { deletePostAction, getPostAction, postViewsCounttAction } from "../../redux/slices/posts/postsSlices";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams, useNavigate, Link } from "react-router-dom";
-import LoadingComponent from "../Alert/LoadingComponent";
 import ErrorMsg from "../Alert/ErrorMsg";
 import PostStats from "./PostStats";
 import calculateReadingtime from "../../utils/calculateReadingtime";
-// import AddComment from "../Comments/AddComment";
 import AddComment from "../Comments/AddComment";
 
 const PostDetails = () => {
@@ -15,7 +12,7 @@ const PostDetails = () => {
     const navigate = useNavigate();
     //! redux store
     const dispatch = useDispatch();
-    const { post, error, loading, success } = useSelector(
+    const { post, error, success } = useSelector(
         (state) => state?.posts
     );
 
@@ -31,7 +28,7 @@ const PostDetails = () => {
     //! Post view count
     useEffect(() => {
         dispatch(postViewsCounttAction(postId));
-    }, [dispatch]);
+    });
 
     //! Get the creator of the post
     const creator = post?.post?.author?._id?.toString();

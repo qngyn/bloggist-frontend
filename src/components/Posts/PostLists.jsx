@@ -9,7 +9,7 @@ import truncatePost from "../../utils/truncatePost";
 const PostLists = () => {
     //! redux store
     const dispatch = useDispatch();
-    const { posts, error, loading, success } = useSelector(
+    const { posts, error, loading } = useSelector(
         (state) => state?.posts
     );
     //Rediret if token expired

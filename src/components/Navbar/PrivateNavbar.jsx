@@ -1,6 +1,6 @@
 import { Fragment } from "react";
 import { Disclosure, Menu, Transition } from "@headlessui/react";
-import { Bars3Icon, BellIcon, XMarkIcon } from "@heroicons/react/24/outline";
+import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import { PlusIcon } from "@heroicons/react/20/solid";
 import { Link } from "react-router-dom";
 import { FaBlog } from "react-icons/fa";
@@ -12,7 +12,7 @@ function classNames(...classes) {
 }
 
 export default function PrivateNavbar() {
-  const { profile, userAuth } = useSelector((state) => state?.users);
+  const { userAuth } = useSelector((state) => state?.users);
   //!dispatch
   const dispatch = useDispatch();
   const logoutHandler = () => {
@@ -169,7 +169,7 @@ export default function PrivateNavbar() {
                       userAuth?.userInfo?.profilePicture ||
                       "https://cdn.pixabay.com/photo/2016/11/18/23/38/child-1837375_1280.png"
                     }
-                  />
+                    alt="nothing"/>
                 </div>
                 <div className="ml-3">
                   <div className="text-base font-medium text-gray-800">

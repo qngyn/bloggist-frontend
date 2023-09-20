@@ -37,7 +37,7 @@ const UpdateUser = () => {
         })
     }
   //store data
-    const { loading, error, success, isUpdated } = useSelector((state) => state?.users)
+    const { loading, error, isUpdated } = useSelector((state) => state?.users)
     useEffect(() => {
         if (isUpdated) {
         setTimeout(() => {
